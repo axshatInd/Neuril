@@ -6,6 +6,8 @@ import { logoDark, logoLight } from '../assets/assets';
 
 // Components
 import PageTitle from '../components/PageTitle';
+import TextField from '../components/TextField';
+import { Button } from '../components/Button';
 
 const Register = () => {
   return (
@@ -38,7 +40,31 @@ const Register = () => {
             <Form
               method='POST'
               className=''
-            ></Form>
+            >
+              <TextField
+                type='text'
+                name='name'
+                label='Full Name'
+                placeholder='Full Name'
+                required={true}
+                autoFocus={true}
+              />
+              <TextField
+                type='email'
+                name='email'
+                label='Email'
+                placeholder='Email'
+                required={true}
+              />
+              <TextField
+                type='password'
+                name='password'
+                label='Password'
+                placeholder='Enter your password'
+                required={true}
+              />
+              <Button type='submit'>Create account</Button>
+            </Form>
           </div>
         </div>
       </div>
