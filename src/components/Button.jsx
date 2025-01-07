@@ -22,7 +22,7 @@ Button.propTypes = {
   classes: PropTypes.string,
   variant: PropTypes.string,
   color: PropTypes.string,
-  children: PropTypes.node, // Updated to be more specific
+  children: PropTypes.node, // Updated to be more specific (was any)
 };
 
 export { Button };

@@ -50,3 +50,74 @@
     dark:bg-dark-onBackground/15;
   }
 }
+
+/* 
+COMPONENTS
+*/
+@layer components {
+  /* Text Field*/
+
+  .text-field-wrapper {
+    @apply relative;
+  }
+
+  .text-field {
+    @apply ring-1
+    ring-inset
+    ring-light-outline
+    dark:ring-dark-outline
+    bg-inherit
+    text-light-onSurface
+    dark:text-dark-onSurface
+    caret-light-primary dark:caret-dark-primary 
+    h-12 
+    px-4 
+    rounded-extraSmall 
+    transition-shadow 
+    duration-short3 
+    ease-linear
+    hover:ring-light-onSurface
+    hover:dark:ring-dark-onSurface
+    focus:ring-2
+    focus:ring-light-primary
+    focus:dark:ring-dark-primary;
+  }
+
+  .text-field::placeholder {
+    @apply opacity-0
+    transition-opacity;
+  }
+
+  .text-field:focus::placeholder {
+    @apply opacity-100;
+  }
+
+  .label-text {
+    @apply absolute
+    text-labelLarge
+    top-[18px]
+    left-2
+    text-light-onSurfaceVariant
+    dark:text-dark-onSurfaceVariant
+    bg-light-background
+    dark:bg-dark-background
+    px-2
+    origin-[center_left]
+    pointer-events-none
+    select-none
+    transition-[color,transform]
+    duration-short4
+    ease-standard;
+  }
+
+  .text-field-wrapper:hover .label-text {
+    @apply text-light-onSurface
+    dark:text-dark-onSurface;
+  }
+
+  .text-field-wrapper:focus-within .label-text {
+    @apply translate-x-0.5
+    -translate-y-7
+    scale-[0.85];
+  }
+}
