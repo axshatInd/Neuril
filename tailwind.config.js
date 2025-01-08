@@ -59,55 +59,55 @@ export default {
           surfaceContainerHighest: "#FFE0DD",
         },
         dark: {
-          primary: "#FFC0CC",
-          surfaceTint: "#FFC0CC",
-          onPrimary: "#5A0A30",
-          primaryContainer: "#7A2945",
-          onPrimaryContainer: "#FFD4E1",
-          secondary: "#FFC9AE",
-          onSecondary: "#562700",
-          secondaryContainer: "#7C3B12",
-          onSecondaryContainer: "#FFE1D0",
-          tertiary: "#FFC7A2",
-          onTertiary: "#5A2B00",
-          tertiaryContainer: "#7D3D14",
-          onTertiaryContainer: "#FFE2C5",
-          error: "#FFB4AB",
-          onError: "#690005",
-          errorContainer: "#93000A",
-          onErrorContainer: "#FFDAD6",
-          background: "#1F1A1A",
-          onBackground: "#EDE2DF",
-          surface: "#1F1A1A",
-          onSurface: "#EDE2DF",
-          surfaceVariant: "#5A2D24",
-          onSurfaceVariant: "#D8C4C0",
-          outline: "#B39B97",
-          outlineVariant: "#5A2D24",
-          shadow: "#000000",
-          scrim: "#000000",
-          inverseSurface: "#EDE2DF",
-          inverseOnSurface: "#341A16",
-          inversePrimary: "#F45A8D",
-          primaryFixed: "#FFD4E1",
-          onPrimaryFixed: "#3F0020",
-          primaryFixedDim: "#FFC0CC",
-          onPrimaryFixedVariant: "#933954",
-          secondaryFixed: "#FFE1D0",
-          onSecondaryFixed: "#4F1E00",
-          secondaryFixedDim: "#FFC9AE",
-          onSecondaryFixedVariant: "#8E4B1A",
-          tertiaryFixed: "#FFE2C5",
-          onTertiaryFixed: "#4C2100",
-          tertiaryFixedDim: "#FFC7A2",
-          onTertiaryFixedVariant: "#8C5417",
-          surfaceDim: "#271D1C",
-          surfaceBright: "#4E3330",
-          surfaceContainerLowest: "#141010",
-          surfaceContainerLow: "#1F1A1A",
-          surfaceContainer: "#271E1C",
-          surfaceContainerHigh: "#312725",
-          surfaceContainerHighest: "#3B2F2D",
+          primary: "#FFB9AC", // Soft peach pink
+          surfaceTint: "#FFB9AC",
+          onPrimary: "#59261A", // Deep reddish-brown
+          primaryContainer: "#874534", // Muted terracotta
+          onPrimaryContainer: "#FFD9CF", // Light peach pink
+          secondary: "#FFE0B4", // Soft pastel orange
+          onSecondary: "#57320C", // Warm brown
+          secondaryContainer: "#7C4F24", // Muted orange-brown
+          onSecondaryContainer: "#FFEAD3", // Light pastel cream
+          tertiary: "#B8E3E0", // Soft aqua
+          onTertiary: "#00322E", // Deep teal
+          tertiaryContainer: "#23524F", // Muted teal
+          onTertiaryContainer: "#CFEFEF", // Light pastel aqua
+          error: "#FFB3B3", // Light red
+          onError: "#750000", // Deep red
+          errorContainer: "#930000", // Darker red
+          onErrorContainer: "#FFE5E5", // Light red tint
+          background: "#1A1918", // Dark gray-brown
+          onBackground: "#EAE5E3", // Soft white
+          surface: "#1A1918", // Same as background
+          onSurface: "#EAE5E3", // Soft white
+          surfaceVariant: "#4A423D", // Muted brown
+          onSurfaceVariant: "#D5C9C2", // Soft pastel gray
+          outline: "#A89185", // Light brown-gray
+          outlineVariant: "#4A423D", // Same as surfaceVariant
+          shadow: "#000000", // Black
+          scrim: "#000000", // Black
+          inverseSurface: "#EAE5E3", // Soft white
+          inverseOnSurface: "#302B28", // Darker gray-brown
+          inversePrimary: "#FFB9AC", // Same as primary
+          primaryFixed: "#FFD9CF", // Light peach pink
+          onPrimaryFixed: "#4A211C", // Muted red-brown
+          primaryFixedDim: "#FFB9AC", // Same as primary
+          onPrimaryFixedVariant: "#834238", // Muted terracotta
+          secondaryFixed: "#FFEAD3", // Light pastel cream
+          onSecondaryFixed: "#57320C", // Warm brown
+          secondaryFixedDim: "#FFE0B4", // Same as secondary
+          onSecondaryFixedVariant: "#7C4F24", // Same as secondaryContainer
+          tertiaryFixed: "#CFEFEF", // Light pastel aqua
+          onTertiaryFixed: "#00322E", // Deep teal
+          tertiaryFixedDim: "#B8E3E0", // Same as tertiary
+          onTertiaryFixedVariant: "#23524F", // Same as tertiaryContainer
+          surfaceDim: "#241F1E", // Dark gray-brown
+          surfaceBright: "#483F3C", // Slightly lighter gray-brown
+          surfaceContainerLowest: "#151312", // Very dark gray-brown
+          surfaceContainerLow: "#1A1918", // Same as background
+          surfaceContainer: "#241F1E", // Dark gray-brown
+          surfaceContainerHigh: "#2F2927", // Slightly lighter
+          surfaceContainerHighest: "#392F2C", // Lightest dark gray-brown
         },
       },
 

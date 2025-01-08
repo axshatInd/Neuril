@@ -17,7 +17,7 @@ const Register = () => {
         <div className='flex flex-col p-4'>
           <Link
             to={'/'}
-            className='max-w-max mb-auto mx-auto lg:mx-0'
+            className='max-w-max mb-auto mx-auto justify-center'
           >
             <img
               src={logoLight}
