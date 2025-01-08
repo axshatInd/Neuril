@@ -175,4 +175,28 @@ COMPONENTS
     > .state-layer {
     @apply opacity-[0.1]; /* Adjust focus opacity for better contrast */
   }
+
+  /* SIGN IN LINK */
+
+  .link {
+    @apply transition-colors
+    duration-short3
+    ease-standard
+    hover:text-light-primary
+    hover:dark:text-dark-primary
+    hover:underline;
+  }
+}
+
+/* UTILITIES */
+@layer utilities {
+  .img-box {
+    @apply bg-light-surfaceContainerHighest dark:bg-dark-surfaceContainerHighest overflow-hidden;
+  }
+
+  .img-cover {
+    @apply w-full
+    h-full
+    object-cover;
+  }
 }

@@ -17,7 +17,7 @@ const Register = () => {
         <div className='flex flex-col p-4'>
           <Link
             to={'/'}
-            className='max-w-max mx-auto lg:mx-0'
+            className='max-w-max mb-auto mx-auto lg:mx-0'
           >
             <img
               src={logoLight}
@@ -70,25 +70,29 @@ const Register = () => {
               />
               <Button type='submit'>Create account</Button>
             </Form>
-            <p className=''>
+            <p className='text-bodyMedium text-light-onSurfaceVariant dark:text-dark-onSurfaceVariant text-center mt-4'>
               Already have an account?
               <Link
                 to={'/login'}
-                className=''
+                className='link inline-block ms-1 text-light-onSurface dark:text-dark-onSurface'
               >
                 Sign in
               </Link>
             </p>
           </div>
-          <p className=''>&copy; 2025 axshatind. All rights reserved</p>
+          <p className='mt-auto mx-auto text-light-onSurfaceVariant dark:text-dark-onSurfaceVariant text-bodyMedium lg:mx-0 '>
+            &copy; 2025 axshatind. All rights reserved
+          </p>
         </div>
-        <div className=''>
+        <div className='hidden img-box lg:block lg:relative lg:rounded-large'>
           <img
             src={banner}
             alt=''
             className='img-cover'
           />
-          <p className=''>Chat with Neuril to supercharge your ideas.</p>
+          <p className='absolute bottom-10 left-12 right-12 z-10 text-displayLarge font-semibold leading-tight text-right text-light-onSurface drop-shadow-sm 2xl:text-[72px]'>
+            Chat with Neuril & supercharge your ideas.
+          </p>
         </div>
       </div>
     </>
