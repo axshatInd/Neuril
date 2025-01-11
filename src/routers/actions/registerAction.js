@@ -1,3 +1,6 @@
+/* Node Modules */
+import { redirect } from 'react-router-dom';
+
 /* Custom Modules */
 import { account } from '../../lib/appwrite';
 import generateID from '../../utils/generateID';
@@ -20,7 +23,22 @@ const registerAction = async ({ request }) => {
       message: err.message, //Error message from the caught error
     };
   }
-  return null;
+
+  /* After successfully account create, login the user and redirect to homepage */
+  try {
+    //Creates a Session for the new user with the provided email and password
+    await account.createEmailPasswordSession(
+      formData.get('email'),
+      formData.get('password'),
+    );
+  } catch (err) {
+    //Logs any error encountered during session creation and redirect to login page
+    console.log(`Error creating email session: ${err.message}`);
+    return redirect('/login');
+  }
+
+  /* Redirects the user to the home page upon successful registration and login */
+  return redirect('/');
 };
 
 export default registerAction;
