@@ -7,6 +7,9 @@ Custom Modules
 */
 import router from './routers/routes.jsx';
 
+/* Components */
+import SnackbarProvider from './contexts/SnackbarContext.jsx';
+
 /* 
 CSS Link
 */
@@ -15,6 +18,8 @@ import App from './App.jsx';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <SnackbarProvider>
+      <RouterProvider router={router} />
+    </SnackbarProvider>
   </StrictMode>,
 );

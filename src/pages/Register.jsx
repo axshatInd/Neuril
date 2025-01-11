@@ -1,15 +1,36 @@
 // Node Modules
 import React from 'react';
-import { Link, Form } from 'react-router-dom';
-// Custom modules
+import { Link, Form, useNavigation, useActionData } from 'react-router-dom';
+import { useEffect } from 'react';
+
+//Assets
 import { logoDark, logoLight, banner } from '../assets/assets';
+
+//Custom hooks
+import { useSnackbar } from '../hooks/useSnackbar';
 
 // Components
 import PageTitle from '../components/PageTitle';
 import TextField from '../components/TextField';
 import { Button } from '../components/Button';
+import { CircularProgress } from '../components/Progress';
 
 const Register = () => {
+  //Get error data from form submission using useActionData (likely from React Router)
+  const error = useActionData();
+  // Get navigation state e.g. loading/submitting etc
+  const navigation = useNavigation();
+
+  const { showSnackbar } = useSnackbar();
+  useEffect(() => {
+    //Show snackbar with the provided error message
+    if (error?.message) {
+      showSnackbar({
+        message: error.message,
+        type: 'error',
+      });
+    }
+  }, [error, showSnackbar]);
   return (
     <>
       <PageTitle title='Create an account ' />
@@ -68,7 +89,16 @@ const Register = () => {
                 placeholder='Enter your password'
                 required={true}
               />
-              <Button type='submit'>Create account</Button>
+              <Button
+                type='submit'
+                disabled={navigation.state == 'submitting'}
+              >
+                {navigation.state == 'submitting' ? (
+                  <CircularProgress size='small' />
+                ) : (
+                  'Create account'
+                )}
+              </Button>
             </Form>
             <p className='text-bodyMedium text-light-onSurfaceVariant dark:text-dark-onSurfaceVariant text-center mt-4'>
               Already have an account?
