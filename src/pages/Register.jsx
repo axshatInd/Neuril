@@ -2,6 +2,7 @@
 import React from 'react';
 import { Link, Form, useNavigation, useActionData } from 'react-router-dom';
 import { useEffect } from 'react';
+import { AnimatePresence } from 'framer-motion';
 
 //Assets
 import { logoDark, logoLight, banner } from '../assets/assets';
@@ -13,7 +14,7 @@ import { useSnackbar } from '../hooks/useSnackbar';
 import PageTitle from '../components/PageTitle';
 import TextField from '../components/TextField';
 import { Button } from '../components/Button';
-import { CircularProgress } from '../components/Progress';
+import { CircularProgress, LinearProgress } from '../components/Progress';
 
 const Register = () => {
   //Get error data from form submission using useActionData (likely from React Router)
@@ -125,6 +126,11 @@ const Register = () => {
           </p>
         </div>
       </div>
+      <AnimatePresence>
+        {navigation.state == 'loading' && (
+          <LinearProgress classes='absolute top-0 left-0 right-0' />
+        )}
+      </AnimatePresence>
     </>
   );
 };
