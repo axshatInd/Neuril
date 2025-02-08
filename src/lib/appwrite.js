@@ -1,4 +1,4 @@
-import { Client, Account } from 'appwrite';
+import { Client, Account, Avatars } from 'appwrite';
 
 /* Initial appwrite client */
 const client = new Client();
@@ -9,4 +9,7 @@ client
 /* Initial appwrite account */
 const account = new Account(client);
 
-export { account };
+/* Initial appwrite avatars */
+const avatars = new Avatars(client);
+
+export { account, avatars };
