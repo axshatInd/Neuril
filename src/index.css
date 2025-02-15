@@ -259,6 +259,44 @@ COMPONENTS
     dark:bg-dark-errorContainer
     dark:text-dark-onErrorContainer;
   }
+
+  /* Icon Button */
+  .icon-btn {
+    --state-layer-bg: theme('colors.light.onSurfaceVariant');
+    @apply text-light-onSurfaceVariant dark:text-dark-onSurfaceVariant 
+         grid place-items-center rounded-full h-10 w-10;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .icon-btn {
+      --state-layer-bg: theme('colors.dark.onSurfaceVariant');
+      /* Fallback for dark mode */
+    }
+  }
+
+  .icon-btn:disabled {
+    @apply text-light-onSurfaceVariant/[0.38]
+    dark:text-dark-onSurfaceVariant/[0.38]
+    cursor-not-allowed;
+  }
+
+  .icon-btn-small {
+    @apply w-7
+    h-7
+    min-w-7
+    min-h-7;
+  }
+
+  .icon-btn.small .icon {
+    @apply text-[18px];
+  }
+
+  .icon-btn-large {
+    @apply w-12
+    h-12
+    min-w-12
+    min-h-12;
+  }
 }
 
 /* UTILITIES */
@@ -271,5 +309,18 @@ COMPONENTS
     @apply w-full
     h-full
     object-cover;
+  }
+
+  .material-symbols-rounded {
+    font-variation-settings:
+      'FILL' 0,
+      'wght' 400,
+      'GRAD' 0,
+      'opsz' 24;
+    @apply w-[1em]
+    min-w-[1em]
+    h-[1em]
+    min-h-[1em]
+    overflow-hidden;
   }
 }
