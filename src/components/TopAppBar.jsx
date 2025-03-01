@@ -70,7 +70,6 @@ const TopAppBar = () => {
       <div className='menu-wrapper'>
         <IconBtn
           onClick={() => {
-            console.log('Avatar clicked, toggling menu');
             setShowMenu();
           }}
         >

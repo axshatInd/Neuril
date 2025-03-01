@@ -7,7 +7,7 @@ const MenuItems = ({ classes = '', labelText, onClick, ...rest }) => {
       className={`menu-item ${classes}`}
       onClick={(e) => {
         e.stopPropagation(); // Prevents unwanted event bubbling
-        console.log(`Clicked: ${labelText}`); // 🔍 Debugging log
+        // console.log(`Clicked: ${labelText}`); // 🔍 Debugging log
         if (onClick) onClick();
       }}
       {...rest} // Spread other props (like `data-testid`, etc.)
