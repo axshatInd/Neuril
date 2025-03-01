@@ -1,5 +1,8 @@
 /* Node Modules */
-import { Link, useNavigation } from 'react-router-dom';
+import { Link, useNavigation, useNavigate } from 'react-router-dom';
+
+/* Custom Modules */
+import logout from '../utils/logout';
 
 /* Custom Hooks */
 import { useToggle } from '../hooks/useToggle';
@@ -18,6 +21,10 @@ import { logoLight, logoDark } from '../assets/assets';
 const TopAppBar = () => {
   // -useNavigation: Provides navigation state (loading, idle, submitting, etc.)
   const navigation = useNavigation();
+
+  // -useNavigate : Function for programmatically navigating between routes
+
+  const navigate = useNavigate();
 
   /* use a custom hook to manage the menu's show state, 'showMenu' holds the current state, and 'setShowMenu' is a function to toggle the menu. */
   const [showMenu, setShowMenu] = useToggle();
@@ -61,12 +68,20 @@ const TopAppBar = () => {
       </div>
 
       <div className='menu-wrapper'>
-        <IconBtn onClick={setShowMenu}>
+        <IconBtn
+          onClick={() => {
+            console.log('Avatar clicked, toggling menu');
+            setShowMenu();
+          }}
+        >
           <Avatar name='Akshat' />
         </IconBtn>
 
         <Menu classes={showMenu ? 'menu-active' : ''}>
-          <MenuItems labelText='Log out' />
+          <MenuItems
+            labelText='Log out'
+            onClick={() => logout(navigate)}
+          />
         </Menu>
       </div>
 
