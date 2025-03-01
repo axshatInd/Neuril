@@ -144,13 +144,17 @@ COMPONENTS
   }
 
   .btn.filled.primary {
-    --state-layer-bg: var(--light-on-primary); /* Fallback for light mode */
+    --state-layer-bg: theme(
+      'colors.light.onPrimary'
+    ); /* Fallback for light mode */
     @apply bg-light-primary text-light-onPrimary dark:bg-dark-primary dark:text-dark-onPrimary;
   }
 
   @media (prefers-color-scheme: dark) {
     .btn.filled.primary {
-      --state-layer-bg: var(--dark-on-primary); /* Fallback for dark mode */
+      --state-layer-bg: theme(
+        'colors.dark.onPrimary'
+      ); /* Fallback for dark mode */
     }
   }
 
@@ -159,6 +163,7 @@ COMPONENTS
   }
 
   /* State Layer */
+
   :has(> .state-layer) {
     @apply relative overflow-hidden isolate;
   }
@@ -328,6 +333,24 @@ COMPONENTS
       transform 200ms ease-in-out,
       opacity 200ms ease-in-out,
       visibility 200ms ease-in-out;
+  }
+
+  .menu-active {
+    @apply scale-100
+    opacity-100
+    visible;
+  }
+
+  .menu-item {
+    --state-layer-bg: theme('colors.light.onSurface');
+    @apply text-light-onSurface
+    dark:text-dark-onSurface
+    text-labelLarge
+    h-12
+    w-full
+    flex
+    items-center
+    px-3;
   }
 }
 
