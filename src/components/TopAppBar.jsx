@@ -1,6 +1,8 @@
 /* Node Modules */
 import { Link, useNavigation } from 'react-router-dom';
-import { useState } from 'react';
+
+/* Custom Hooks */
+import { useToggle } from '../hooks/useToggle';
 
 /* Components */
 import { IconBtn } from './Button';
@@ -17,15 +19,15 @@ const TopAppBar = () => {
   // -useNavigation: Provides navigation state (loading, idle, submitting, etc.)
   const navigation = useNavigation();
 
+  /* use a custom hook to manage the menu's show state, 'showMenu' holds the current state, and 'setShowMenu' is a function to toggle the menu. */
+  const [showMenu, setShowMenu] = useToggle();
+
   /* 
   Check if the current navigation state is 'loading' and if there is no form data associated with the navigation. 
   This condition typically signifies a normal page load, 
   where the page is loading for the first time or is being reloaded without submitting a form.
   */
-  const isNormalLoad = navigation.state === 'loading' && !navigation.formData;
-
-  // Menu state
-  const [menuOpen, setMenuOpen] = useState(false);
+  const isNormalLoad = navigation.state == 'loading' && !navigation.formData;
 
   return (
     <header className='relative flex justify-between items-center h-16 px-4'>
@@ -47,6 +49,7 @@ const TopAppBar = () => {
             alt='Neuril Logo'
             className='dark:hidden'
           />
+
           <img
             src={logoDark}
             width={133}
@@ -57,16 +60,14 @@ const TopAppBar = () => {
         </Link>
       </div>
 
-      <div className='relative menu-wrapper'>
-        <IconBtn onClick={() => setMenuOpen(!menuOpen)}>
+      <div className='menu-wrapper'>
+        <IconBtn onClick={setShowMenu}>
           <Avatar name='Akshat' />
         </IconBtn>
 
-        {menuOpen && (
-          <Menu classes='menu-active'>
-            <MenuItems labelText='Log out' />
-          </Menu>
-        )}
+        <Menu classes={showMenu ? 'menu-active' : ''}>
+          <MenuItems labelText='Log out' />
+        </Menu>
       </div>
 
       <AnimatePresence>{isNormalLoad && <LinearProgress />}</AnimatePresence>

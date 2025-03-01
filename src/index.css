@@ -352,6 +352,12 @@ COMPONENTS
     items-center
     px-3;
   }
+
+  @media (prefers-color-scheme: dark) {
+    .menu-item {
+      --state-layer-bg: theme('colors.dark.onSurface');
+    }
+  }
 }
 
 /* UTILITIES */
