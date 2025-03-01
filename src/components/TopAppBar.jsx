@@ -14,8 +14,14 @@ import { AnimatePresence } from 'framer-motion';
 import { logoLight, logoDark } from '../assets/assets';
 
 const TopAppBar = () => {
-  // Navigation state
+  // -useNavigation: Provides navigation state (loading, idle, submitting, etc.)
   const navigation = useNavigation();
+
+  /* 
+  Check if the current navigation state is 'loading' and if there is no form data associated with the navigation. 
+  This condition typically signifies a normal page load, 
+  where the page is loading for the first time or is being reloaded without submitting a form.
+  */
   const isNormalLoad = navigation.state === 'loading' && !navigation.formData;
 
   // Menu state
