@@ -1,5 +1,6 @@
 /* Node Modules */
 import { Link, useNavigation } from 'react-router-dom';
+import { useState } from 'react';
 
 /* Components */
 import { IconBtn } from './Button';
@@ -13,15 +14,12 @@ import { AnimatePresence } from 'framer-motion';
 import { logoLight, logoDark } from '../assets/assets';
 
 const TopAppBar = () => {
-  // -useNavigation: Provides navigation state (loading, idle, submitting, etc.)
+  // Navigation state
   const navigation = useNavigation();
+  const isNormalLoad = navigation.state === 'loading' && !navigation.formData;
 
-  /* 
-  Check if the current navigation state is 'loading' and if there is no form data associated with the navigation. 
-  This condition typically signifies a normal page load, 
-  where the page is loading for the first time or is being reloaded without submitting a form.
-  */
-  const isNormalLoad = navigation.state == 'loading' && !navigation.formData;
+  // Menu state
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <header className='relative flex justify-between items-center h-16 px-4'>
@@ -43,7 +41,6 @@ const TopAppBar = () => {
             alt='Neuril Logo'
             className='dark:hidden'
           />
-
           <img
             src={logoDark}
             width={133}
@@ -54,14 +51,16 @@ const TopAppBar = () => {
         </Link>
       </div>
 
-      <div className='menu-wrapper'>
-        <IconBtn>
+      <div className='relative menu-wrapper'>
+        <IconBtn onClick={() => setMenuOpen(!menuOpen)}>
           <Avatar name='Akshat' />
         </IconBtn>
 
-        <Menu classes='active'>
-          <MenuItems labelText='Log out' />
-        </Menu>
+        {menuOpen && (
+          <Menu classes='menu-active'>
+            <MenuItems labelText='Log out' />
+          </Menu>
+        )}
       </div>
 
       <AnimatePresence>{isNormalLoad && <LinearProgress />}</AnimatePresence>
