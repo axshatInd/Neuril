@@ -1,5 +1,10 @@
 /* Node Modules */
-import { Link, useNavigation, useNavigate } from 'react-router-dom';
+import {
+  Link,
+  useNavigation,
+  useNavigate,
+  useLoaderData,
+} from 'react-router-dom';
 
 /* Custom Modules */
 import logout from '../utils/logout';
@@ -25,6 +30,9 @@ const TopAppBar = () => {
   // -useNavigate : Function for programmatically navigating between routes
 
   const navigate = useNavigate();
+
+  /* -user : User data for the currently logged-in user */
+  const { user } = useLoaderData();
 
   /* use a custom hook to manage the menu's show state, 'showMenu' holds the current state, and 'setShowMenu' is a function to toggle the menu. */
   const [showMenu, setShowMenu] = useToggle();
@@ -73,7 +81,7 @@ const TopAppBar = () => {
             setShowMenu();
           }}
         >
-          <Avatar name='Akshat' />
+          <Avatar name={user.name} />
         </IconBtn>
 
         <Menu classes={showMenu ? 'menu-active' : ''}>
