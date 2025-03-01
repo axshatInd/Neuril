@@ -1,6 +1,7 @@
 /* Component */
 import PageTitle from './components/PageTitle';
 import TopAppBar from './components/TopAppBar';
+import Sidebar from './components/Sidebar';
 
 const App = () => {
   return (
@@ -10,6 +11,7 @@ const App = () => {
 
       <div className=''>
         {/* Sidebar */}
+        <Sidebar />
 
         <div className=''>
           {/* Top app bar */}

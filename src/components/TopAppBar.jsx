@@ -1,10 +1,5 @@
 /* Node Modules */
-import {
-  Link,
-  useNavigation,
-  useNavigate,
-  useLoaderData,
-} from 'react-router-dom';
+import { useNavigation, useNavigate, useLoaderData } from 'react-router-dom';
 
 /* Custom Modules */
 import logout from '../utils/logout';
@@ -19,9 +14,7 @@ import Menu from './Menu';
 import MenuItems from './MenuItems';
 import { LinearProgress } from './Progress';
 import { AnimatePresence } from 'framer-motion';
-
-/* Assets */
-import { logoLight, logoDark } from '../assets/assets';
+import Logo from './Logo';
 
 const TopAppBar = () => {
   // -useNavigation: Provides navigation state (loading, idle, submitting, etc.)
@@ -53,26 +46,7 @@ const TopAppBar = () => {
           classes='lg:hidden'
         />
 
-        <Link
-          to='/'
-          className='min-w-max max-w-max h-[24px] lg:hidden'
-        >
-          <img
-            src={logoLight}
-            width={133}
-            height={24}
-            alt='Neuril Logo'
-            className='dark:hidden'
-          />
-
-          <img
-            src={logoDark}
-            width={133}
-            height={24}
-            alt='Neuril Logo'
-            className='hidden dark:block'
-          />
-        </Link>
+        <Logo classes='lg:hidden' />
       </div>
 
       <div className='menu-wrapper'>

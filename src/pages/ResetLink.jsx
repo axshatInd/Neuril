@@ -1,11 +1,11 @@
 // Node Modules
 import React from 'react';
-import { Link, Form, useNavigation, useActionData } from 'react-router-dom';
+import { Form, useNavigation, useActionData } from 'react-router-dom';
 import { useEffect } from 'react';
 import { AnimatePresence } from 'framer-motion';
 
 //Assets
-import { logoDark, logoLight, banner } from '../assets/assets';
+import { banner } from '../assets/assets';
 
 //Custom hooks
 import { useSnackbar } from '../hooks/useSnackbar';
@@ -15,6 +15,7 @@ import PageTitle from '../components/PageTitle';
 import TextField from '../components/TextField';
 import { Button } from '../components/Button';
 import { CircularProgress, LinearProgress } from '../components/Progress';
+import Logo from '../components/Logo';
 
 const ResetLink = () => {
   //Get error data from form submission using useActionData (likely from React Router)
@@ -38,25 +39,7 @@ const ResetLink = () => {
       <PageTitle title='Reset Password' />
       <div className='relative w-screen h-dvh p-2 grid grid-cols-1 lg:grid-cols-[1fr,1.2fr] lg:gap-2'>
         <div className='flex flex-col p-4'>
-          <Link
-            to={'/'}
-            className='max-w-max mb-auto mx-auto justify-center'
-          >
-            <img
-              src={logoLight}
-              alt='Neuril Logo'
-              width={133}
-              height={24}
-              className='dark:hidden'
-            />
-            <img
-              src={logoDark}
-              alt='Neuril Logo'
-              width={133}
-              height={24}
-              className='hidden dark:block'
-            />
-          </Link>
+          <Logo classes='mb-auto mx-auto justify-center' />
           <div className='flex flex-col gap-2 max-w-[480px] w-full mx-auto'>
             <h2 className='text-displaySmall font-semibold text-light-onBackground dark:text-dark-onBackground text-center'>
               Forgot your password?
