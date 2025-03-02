@@ -7,7 +7,7 @@
 
 /* Custom modules */
 import { account, databases } from '../../lib/appwrite';
-import { getConversationTitle } from '../../api/googleAi';
+import { getConversationTitle, getAiResponse } from '../../api/googleAi';
 import generateID from '../../utils/generateID';
 
 const usePromptAction = async (formData) => {
@@ -34,6 +34,22 @@ const usePromptAction = async (formData) => {
   }
 
   // Generate an AI response based on the user's prompt
+  const aiResponse = await getAiResponse(userPrompt);
+  try {
+    // create a new chat document in the 'chats' collection
+    await databases.createDocument(
+      import.meta.env.VITE_APPWRITE_DATABASE_ID,
+      'chats',
+      generateID(),
+      {
+        user_prompt: userPrompt,
+        ai_response: aiResponse,
+        conversation: conversation.$id,
+      },
+    );
+  } catch (err) {
+    console.log(`Error creating chat: ${err.message}`);
+  }
 
   return null;
 };

@@ -32,6 +32,16 @@ const getConversationTitle = async (userPrompt) => {
  * @returns {Promise<string>} A promise that resolves with the AI's response, or rejects with an error.
  */
 
-const getAiResponse = async (userPrompt, chats = []) => {};
+const getAiResponse = async (userPrompt, chats = []) => {
+  try {
+    model.generationConfig = { temperature: 1.5 };
+    const chat = model.startChat({ history: chats });
+    const result = await chat.sendMessage(userPrompt);
 
-export { getConversationTitle };
+    return result.response.text();
+  } catch (err) {
+    console.log(`Error generating AI response: ${err.message}`);
+  }
+};
+
+export { getConversationTitle, getAiResponse };
