@@ -1,5 +1,6 @@
 /* Node Modules */
 import { useNavigation, useNavigate, useLoaderData } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 /* Custom Modules */
 import logout from '../utils/logout';
@@ -16,7 +17,7 @@ import { LinearProgress } from './Progress';
 import { AnimatePresence } from 'framer-motion';
 import Logo from './Logo';
 
-const TopAppBar = () => {
+const TopAppBar = ({ toggleSidebar }) => {
   // -useNavigation: Provides navigation state (loading, idle, submitting, etc.)
   const navigation = useNavigation();
 
@@ -44,6 +45,7 @@ const TopAppBar = () => {
           icon='menu'
           title='Menu'
           classes='lg:hidden'
+          onClick={toggleSidebar}
         />
 
         <Logo classes='lg:hidden' />
@@ -69,6 +71,10 @@ const TopAppBar = () => {
       <AnimatePresence>{isNormalLoad && <LinearProgress />}</AnimatePresence>
     </header>
   );
+};
+
+TopAppBar.propTypes = {
+  toggleSidebar: PropTypes.func,
 };
 
 export default TopAppBar;

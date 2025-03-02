@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 const Button = ({
   classes = '',
@@ -49,4 +50,24 @@ IconBtn.propTypes = {
   children: PropTypes.any,
 };
 
-export { Button, IconBtn };
+/* Extended fab */
+const ExtendedFab = ({ href, text, classes = '', ...rest }) => {
+  return (
+    <Link
+      to={href}
+      className={`extended-fab ${classes}`}
+      {...rest}
+    >
+      <span className='material-symbols-rounded'>add</span>
+      <span>{text}</span>
+    </Link>
+  );
+};
+
+ExtendedFab.propTypes = {
+  href: PropTypes.string,
+  text: PropTypes.string,
+  classes: PropTypes.string,
+};
+
+export { Button, IconBtn, ExtendedFab };
