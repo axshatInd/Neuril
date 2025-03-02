@@ -25,4 +25,13 @@ const getConversationTitle = async (userPrompt) => {
   }
 };
 
+/* Get a response from an AI model based on the user's prompt and the chat history.
+ *
+ * @param {string} userPrompt The user's input prompt.
+ * @param {Array<{ user_prompt: string, ai_response: string}>} chats - An array of previous user prompts and AI responses, used to provide context to the model.
+ * @returns {Promise<string>} A promise that resolves with the AI's response, or rejects with an error.
+ */
+
+const getAiResponse = async (userPrompt, chats = []) => {};
+
 export { getConversationTitle };

@@ -6,8 +6,9 @@
  */
 
 /* Custom modules */
-import { account } from '../../lib/appwrite';
+import { account, databases } from '../../lib/appwrite';
 import { getConversationTitle } from '../../api/googleAi';
+import generateID from '../../utils/generateID';
 
 const usePromptAction = async (formData) => {
   const userPrompt = formData.get('user_prompt');
@@ -16,7 +17,24 @@ const usePromptAction = async (formData) => {
 
   // Get a conversation title based on user prompt
   const conversationTitle = await getConversationTitle(userPrompt);
-  console.log(conversationTitle);
+  let conversation = null;
+  try {
+    // Create a new conversation document in the Appwrite database
+    conversation = await databases.createDocument(
+      import.meta.env.VITE_APPWRITE_DATABASE_ID,
+      'conversations',
+      generateID(),
+      {
+        title: conversationTitle,
+        user_id: user.$id,
+      },
+    );
+  } catch (err) {
+    console.log(`Error creating conversation: ${err.message}`);
+  }
+
+  // Generate an AI response based on the user's prompt
+
   return null;
 };
 
