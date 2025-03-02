@@ -110,8 +110,8 @@ const PromptField = () => {
         contentEditable={true}
         role='textbox'
         aria-multiline={true}
-        aria-label='Let me'
-        data-placeholder='Let me do the lifting!'
+        aria-label='~ Mind Dump Zone ~'
+        data-placeholder='~ Mind Dump Zone ~'
         variants={promptFieldChildrenVariant}
         ref={inputField}
         onInput={handleInputChange}
