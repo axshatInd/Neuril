@@ -5,6 +5,9 @@
  * @returns {Promise<*>} - Returns the result of the action based on the 'request_type' (e.g. 'userPromptAction' or 'conversationAction').
  */
 
+/* Node modules */
+import { redirect } from 'react-router-dom';
+
 /* Custom modules */
 import { account, databases } from '../../lib/appwrite';
 import { getConversationTitle, getAiResponse } from '../../api/googleAi';
@@ -51,7 +54,7 @@ const usePromptAction = async (formData) => {
     console.log(`Error creating chat: ${err.message}`);
   }
 
-  return null;
+  return redirect(`/${conversation.$id}`);
 };
 
 const appAction = async ({ request }) => {

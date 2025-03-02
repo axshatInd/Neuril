@@ -1,5 +1,6 @@
 /* Node Modules */
 import { motion } from 'framer-motion';
+import { Outlet, useParams } from 'react-router-dom';
 
 /* Custom hooks */
 import { useToggle } from './hooks/useToggle';
@@ -12,6 +13,9 @@ import Greetings from './pages/Greetings';
 import PromptField from './components/PromptField';
 
 const App = () => {
+  // Get the URL parameters
+  const params = useParams();
+
   /* use a custom hook to manage the sidebar's open state.
    * 'isSidebarOpen' holds the current state,
    * and 'toggleSidebar' is a function to toggle the sidebar
@@ -38,7 +42,11 @@ const App = () => {
 
           <div className='px-5 pb-5 flex flex-col overflow-y-auto'>
             <div className='max-w-[840px] w-full mx-auto grow'>
-              <Greetings />
+              {params.conversationId ? (
+                <Outlet /> //Conversation
+              ) : (
+                <Greetings />
+              )}
             </div>
           </div>
 
