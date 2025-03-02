@@ -7,6 +7,7 @@
 
 /* Custom modules */
 import { account } from '../../lib/appwrite';
+import { getConversationTitle } from '../../api/googleAi';
 
 const usePromptAction = async (formData) => {
   const userPrompt = formData.get('user_prompt');
@@ -14,6 +15,8 @@ const usePromptAction = async (formData) => {
   const user = await account.get();
 
   // Get a conversation title based on user prompt
+  const conversationTitle = await getConversationTitle(userPrompt);
+  console.log(conversationTitle);
   return null;
 };
 
