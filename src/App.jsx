@@ -25,7 +25,7 @@ const App = () => {
           toggleSidebar={toggleSidebar}
         />
 
-        <div className='h-dvh grid grid-rows-[max-content, minmax(0,1fr), max-content]'>
+        <div className='h-dvh grid grid-rows-[max-content,minmax(0,1fr),max-content]'>
           {/* Top app bar */}
           <TopAppBar toggleSidebar={toggleSidebar} />
 

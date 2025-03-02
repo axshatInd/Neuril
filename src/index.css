@@ -404,7 +404,7 @@ COMPONENTS
   .sidebar-inner {
     @apply h-full
     grid
-    grid-rows-[max-content_max-content_1fr_max-content]
+    grid-rows-[max-content,max-content,1fr,max-content]
     grid-cols-1
     px-3
     opacity-0
@@ -415,7 +415,7 @@ COMPONENTS
     lg:opacity-100;
   }
 
-  .sidebar.active .sidebar.inner {
+  .sidebar.active .sidebar-inner {
     @apply opacity-100
     delay-short2;
   }

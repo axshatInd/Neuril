@@ -59,7 +59,8 @@ const ExtendedFab = ({ href, text, classes = '', ...rest }) => {
       {...rest}
     >
       <span className='material-symbols-rounded'>add</span>
-      <span>{text}</span>
+      <span className='truncate'>{text}</span>
+      <div className='state-layer'></div>
     </Link>
   );
 };
