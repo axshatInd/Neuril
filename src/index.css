@@ -362,8 +362,8 @@ COMPONENTS
   /* Sidebar */
 
   .sidebar {
-    @apply bg-light-surfaceContainerLow
-    dark:bg-dark-surfaceContainerLow
+    @apply bg-light-surfaceContainerHigh
+    dark:bg-dark-surfaceContainerLowest
     text-light-onSurface
     dark:text-dark-onSurface
     fixed

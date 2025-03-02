@@ -1,3 +1,6 @@
+/* Node Modules */
+import { motion } from 'framer-motion';
+
 /* Custom hooks */
 import { useToggle } from './hooks/useToggle';
 
@@ -5,6 +8,8 @@ import { useToggle } from './hooks/useToggle';
 import PageTitle from './components/PageTitle';
 import TopAppBar from './components/TopAppBar';
 import Sidebar from './components/Sidebar';
+import Greetings from './pages/Greetings';
+import PromptField from './components/PromptField';
 
 const App = () => {
   /* use a custom hook to manage the sidebar's open state.
@@ -33,15 +38,23 @@ const App = () => {
 
           <div className='px-5 pb-5 flex flex-col overflow-y-auto'>
             <div className='max-w-[840px] w-full mx-auto grow'>
-              Main Content
+              <Greetings />
             </div>
           </div>
 
           {/* Prompt field */}
-          <div className=''>
-            <p className=''>
-              Neuril may display inaccurate info. Check important info.
-            </p>
+          <div className='bg-light-background dark:bg-dark-background'>
+            <div className='max-w-[870px] px-5 w-full mx-auto'>
+              <PromptField />
+              <motion.p
+                initial={{ opacity: 0, translateY: '-4px' }}
+                animate={{ opacity: 1, translateY: 0 }}
+                transition={{ duration: 0.2, delay: 0.8, ease: 'easeOut' }}
+                className='text-bodySmall text-center text-light-onSurfaceVariant dark:text-dark-onSurfaceVariant p-3'
+              >
+                Neuril can make mistakes, check important info.
+              </motion.p>
+            </div>
           </div>
         </div>
       </div>
