@@ -1,5 +1,10 @@
 /* Node Modules */
-import { useNavigation, useNavigate, useLoaderData } from 'react-router-dom';
+import {
+  useNavigation,
+  useNavigate,
+  useLoaderData,
+  useParams,
+} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 /* Custom Modules */
@@ -28,6 +33,9 @@ const TopAppBar = ({ toggleSidebar }) => {
   /* -user : User data for the currently logged-in user */
   const { user } = useLoaderData();
 
+  /* params object containing URL parameters, including the conversationId */
+  const params = useParams();
+
   /* use a custom hook to manage the menu's show state, 'showMenu' holds the current state, and 'setShowMenu' is a function to toggle the menu. */
   const [showMenu, setShowMenu] = useToggle();
 
@@ -50,6 +58,14 @@ const TopAppBar = ({ toggleSidebar }) => {
 
         <Logo classes='lg:hidden' />
       </div>
+
+      {params.conversationId && (
+        <IconBtn
+          icon='delete'
+          classes='ms-auto me-1 lg-hidden'
+          onClick={() => {}}
+        />
+      )}
 
       <div className='menu-wrapper'>
         <IconBtn

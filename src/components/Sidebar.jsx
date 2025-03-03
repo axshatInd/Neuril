@@ -33,7 +33,9 @@ const Sidebar = ({ isSidebarOpen, toggleSidebar }) => {
           />
 
           <div className='overflow-y-auto -me-2 pe-1'>
-            <p className='text-titleSmall h-9 grid items-center px-4'>Recent</p>
+            <p className='text-titleSmall h-9 grid items-center px-4'>
+              History
+            </p>
             <nav>
               {conversationData.map((item) => (
                 <div
