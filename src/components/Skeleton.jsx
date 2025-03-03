@@ -25,7 +25,7 @@ const Skeleton = () => {
       initial='start'
       animate='end'
     >
-      {skeletonLines.map((item) => {
+      {skeletonLines.map((item) => (
         <motion.div
           key={item}
           className='skeleton'
@@ -35,8 +35,8 @@ const Skeleton = () => {
             repeatType: 'reverse',
             duration: 0.5,
           }}
-        />;
-      })}
+        />
+      ))}
     </motion.div>
   );
 };
