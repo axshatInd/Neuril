@@ -112,14 +112,17 @@ const AiResponse = ({ aiResponse, children }) => {
       </figure>
 
       {children}
-      <div className='markdown-content'>
-        <Markdown
-          remarkPlugins={[remarkGfm]}
-          components={{ code }}
-        >
-          {aiResponse}
-        </Markdown>
-      </div>
+
+      {aiResponse && (
+        <div className='markdown-content'>
+          <Markdown
+            remarkPlugins={[remarkGfm]}
+            components={{ code }}
+          >
+            {aiResponse}
+          </Markdown>
+        </div>
+      )}
     </div>
   );
 };
