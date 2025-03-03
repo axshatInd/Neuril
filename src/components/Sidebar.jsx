@@ -49,7 +49,7 @@ const Sidebar = ({ isSidebarOpen, toggleSidebar }) => {
                     <span className='material-symbols-rounded icon-small'>
                       chat_bubble
                     </span>
-                    \<span className='truncate'>{item.title}</span>
+                    <span className='truncate'>{item.title}</span>
                     <div className='state-layer'></div>
                   </NavLink>
                   <IconBtn
