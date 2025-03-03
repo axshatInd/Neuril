@@ -4,11 +4,13 @@ import {
   useNavigate,
   useLoaderData,
   useParams,
+  useSubmit,
 } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 /* Custom Modules */
 import logout from '../utils/logout';
+import deleteConversation from '../utils/deleteConversation';
 
 /* Custom Hooks */
 import { useToggle } from '../hooks/useToggle';
@@ -30,11 +32,18 @@ const TopAppBar = ({ toggleSidebar }) => {
 
   const navigate = useNavigate();
 
-  /* -user : User data for the currently logged-in user */
-  const { user } = useLoaderData();
+  /*
+   * -conversations: Array containing all conversation data.
+   * -user : User data for the currently logged-in user */
+  const { conversations, user } = useLoaderData();
 
   /* params object containing URL parameters, including the conversationId */
   const params = useParams();
+
+  /* Obtain the useSubmit hook for handling form submissions:
+   * -submit: Function for submitting forms and triggering server-side actions.
+   */
+  const submit = useSubmit();
 
   /* use a custom hook to manage the menu's show state, 'showMenu' holds the current state, and 'setShowMenu' is a function to toggle the menu. */
   const [showMenu, setShowMenu] = useToggle();
@@ -63,7 +72,17 @@ const TopAppBar = ({ toggleSidebar }) => {
         <IconBtn
           icon='delete'
           classes='ms-auto me-1 lg:hidden'
-          onClick={() => {}}
+          onClick={() => {
+            // Find the current conversation title
+            const { title } = conversations.documents.find(
+              ({ $id }) => params.conversationId === $id,
+            );
+            deleteConversation({
+              id: params.conversationId,
+              title,
+              submit,
+            });
+          }}
         />
       )}
 

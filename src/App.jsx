@@ -1,9 +1,17 @@
 /* Node Modules */
 import { motion } from 'framer-motion';
-import { Outlet, useParams, useNavigation } from 'react-router-dom';
+import { useEffect, useRef } from 'react';
+import {
+  Outlet,
+  useParams,
+  useNavigation,
+  useActionData,
+} from 'react-router-dom';
 
 /* Custom hooks */
 import { useToggle } from './hooks/useToggle';
+import { useSnackbar } from './hooks/useSnackbar';
+import { usePromptPreloader } from './hooks/userPromptPreloader';
 
 /* Component */
 import PageTitle from './components/PageTitle';
@@ -19,12 +27,49 @@ const App = () => {
   // Access the navigation state.
   const navigation = useNavigation();
 
+  // Get the data passed from a form action.
+  const actionData = useActionData();
+
+  /* Create a reference to an HTML element,
+   * likely used to interact with the chat history. */
+  const chatHistoryRef = useRef();
+
   /* use a custom hook to manage the sidebar's open state.
    * 'isSidebarOpen' holds the current state,
    * and 'toggleSidebar' is a function to toggle the sidebar
    */
 
   const [isSidebarOpen, toggleSidebar] = useToggle();
+
+  /* Access the prompt preloader state,
+   * particularly the value for prompt preloading. */
+  const { promptPreloaderValue } = usePromptPreloader();
+
+  const { showSnackbar } = useSnackbar();
+
+  /* This useEffect hook is triggered whenever the 'promptPreloaderValue' or 'chatHistoryRef' changes.
+   * Inside the hook, we get the current HTML element referenced by 'chatHistoryRef'.
+   * Then, we check if 'promptPreloaderValue' is true, indicating that a new message is being loaded.
+   * If it's true, we smoothly scroll the chat history to the bottom.
+   * This ensures that the latest message is always visible after loading new content.  */
+  useEffect(() => {
+    const chatHistory = chatHistoryRef.current;
+    if (promptPreloaderValue) {
+      chatHistory.scroll({
+        top: chatHistory.scrollHeight - chatHistory.clientHeight,
+        behavior: 'smooth',
+      });
+    }
+  }, [chatHistoryRef, promptPreloaderValue]);
+
+  // show snackbar after deleting a conversation
+  useEffect(() => {
+    if (actionData?.conversationTitle) {
+      showSnackbar({
+        message: `Deleted '${actionData.conversationTitle}' conversation.`,
+      });
+    }
+  }, [actionData, showSnackbar]);
 
   /* Check if the current navigation state is 'loading' and if there is no form data associated
   with the navigation.
@@ -50,7 +95,10 @@ const App = () => {
 
           {/* Main content */}
 
-          <div className='px-5 pb-5 flex flex-col overflow-y-auto'>
+          <div
+            ref={chatHistoryRef}
+            className='px-5 pb-5 flex flex-col overflow-y-auto'
+          >
             <div className='max-w-[840px] w-full mx-auto grow'>
               {isNormalLoad ? null : params.conversationId ? (
                 <Outlet /> //Conversation
