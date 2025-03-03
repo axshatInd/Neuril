@@ -1,6 +1,6 @@
 /* Node Modules */
 import { motion } from 'framer-motion';
-import { Outlet, useParams } from 'react-router-dom';
+import { Outlet, useParams, useNavigation } from 'react-router-dom';
 
 /* Custom hooks */
 import { useToggle } from './hooks/useToggle';
@@ -16,12 +16,22 @@ const App = () => {
   // Get the URL parameters
   const params = useParams();
 
+  // Access the navigation state.
+  const navigation = useNavigation();
+
   /* use a custom hook to manage the sidebar's open state.
    * 'isSidebarOpen' holds the current state,
    * and 'toggleSidebar' is a function to toggle the sidebar
    */
 
   const [isSidebarOpen, toggleSidebar] = useToggle();
+
+  /* Check if the current navigation state is 'loading' and if there is no form data associated
+  with the navigation.
+  * This condition typically signifies a normal page load, where the page is loading for the first time or is
+  being reloaded without submitting a form. 
+   */
+  const isNormalLoad = navigation.state === 'loading' && !navigation.formData;
   return (
     <>
       {/* Meta Title */}
@@ -42,7 +52,7 @@ const App = () => {
 
           <div className='px-5 pb-5 flex flex-col overflow-y-auto'>
             <div className='max-w-[840px] w-full mx-auto grow'>
-              {params.conversationId ? (
+              {isNormalLoad ? null : params.conversationId ? (
                 <Outlet /> //Conversation
               ) : (
                 <Greetings />

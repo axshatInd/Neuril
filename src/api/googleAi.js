@@ -10,6 +10,7 @@
  */
 
 /* Custom modules */
+import { text } from 'framer-motion/client';
 import model from '../lib/googleAi';
 
 const getConversationTitle = async (userPrompt) => {
@@ -33,9 +34,22 @@ const getConversationTitle = async (userPrompt) => {
  */
 
 const getAiResponse = async (userPrompt, chats = []) => {
+  const history = [];
+  chats.forEach(({ user_prompt, ai_response }) => {
+    history.push(
+      {
+        role: 'user',
+        parts: [{ text: user_prompt }],
+      },
+      {
+        role: 'model',
+        parts: [{ text: ai_response }],
+      },
+    );
+  });
   try {
     model.generationConfig = { temperature: 1.5 };
-    const chat = model.startChat({ history: chats });
+    const chat = model.startChat({ history });
     const result = await chat.sendMessage(userPrompt);
 
     return result.response.text();

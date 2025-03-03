@@ -24,6 +24,7 @@ import loginAction from './actions/loginAction.js';
 import resetLinkAction from './actions/resetLinkAction.js';
 import resetPasswordAction from './actions/resetPasswordAction.js';
 import appAction from './actions/appAction.js';
+import conversationAction from './actions/conversationAction.js';
 
 /* 
 Router
@@ -39,6 +40,7 @@ const router = createBrowserRouter([
         path: '/:conversationId',
         element: <Conversation />,
         loader: conversationLoader,
+        action: conversationAction,
       },
     ],
   },
