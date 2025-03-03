@@ -62,7 +62,7 @@ const TopAppBar = ({ toggleSidebar }) => {
       {params.conversationId && (
         <IconBtn
           icon='delete'
-          classes='ms-auto me-1 lg-hidden'
+          classes='ms-auto me-1 lg:hidden'
           onClick={() => {}}
         />
       )}
